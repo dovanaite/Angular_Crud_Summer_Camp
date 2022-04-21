@@ -1,27 +1,24 @@
-# CrudSummerCamp
+# 1 Užduotis savarankiškam darbui
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+Jūs kursite sistemą skirtą užregistruoti vaikus į vasaros gamtininkų stovyklą. Pirmiausia susikurkite formą kurioje veiktų validacija, o paspaudus registruotis duomenys būtų atvaizduojami konsolėje.
 
-## Development server
+Formoje turi būti įvedami šie duomenys:
+Vaiko vardas,
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Vaiko pavardė
 
-## Code scaffolding
+Vaiko gimimo metai (įvedami tik metai)
+Vaiko lytis (radio button: vyras ir moteris)
+El. paštas
+Telefonas
+Klasė (Pasirinkimas nuo 5-os iki 12-os klasės)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Turite panaudoti šias validacijos taisykles:
+Vardas - tekstas, ne trumpesnis nei 3 simboliai ir ne daugiau nei 15 simbolių, laukas privalomas
+gimimo metai - skaičius, laukas privalomas
+el. pašto adresas - tekstas, validus el. pašto adresas, privalomas
+telefonas - tekstas, formatas: +37065312345 ilgis nuo 10-12 simbolių (panaudoti place holder)
+klasė - skaičius, nuo 5 iki 12 privalomas
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# 2 Užduotis savarankiškam darbui
+Sukurkite taisyklę kuri leistų registruotis tik tiems vaikams kurių amžius yra nuo 12 iki 18 metų (pasinaudokite įvesta gimimo data).
