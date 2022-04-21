@@ -1,0 +1,111 @@
+<div class="card">
+  <div class="card-header">Registracija į gamtininkų vasaros stovyklą</div>
+
+  <div class="card-body">
+    <form action="" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="mb-3">
+        <label for="" class="form-label">Vaiko vardas</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="name"
+          required
+          minlength="3"
+          maxlength="15"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Vaiko pavardė</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="surname"
+          required
+          minlength="3"
+          maxlength="15"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Vaiko gimimo metai</label>
+        <input
+          type="number"
+          class="form-control"
+          ngModel
+          name="birthday"
+          required
+          min="1900"
+          max="2022"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Vaiko lytis</label>
+        <div>
+          <input
+            id="girl"
+            type="radio"
+            value="girl"
+            ngModel
+            name="gender"
+            required
+          />
+          &nbsp;
+          <label class="form-check-label" for="girl">Mergaitė</label>
+        </div>
+        <div>
+          <input
+            id="boy"
+            type="radio"
+            value="boy"
+            ngModel
+            name="gender"
+            required
+          />
+          &nbsp;
+          <label class="form-check-label" for="boy">Berniukas</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">El. paštas</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="email"
+          email
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Telefonas</label>
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="phone"
+          required
+          placeholder="+370 "
+          minlength="8"
+          maxlength="12"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Klasė</label> &nbsp;
+        <select class="form-control" ngModel name="class" required>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">8</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!f.valid">
+        Registruoti
+      </button>
+    </form>
+  </div>
+</div>
