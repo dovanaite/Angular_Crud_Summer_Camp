@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NewComponent } from './components/new/new.component';
+import { AgeValidatorDirective } from './directives/age-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavigationComponent,
-    NewComponent
+    NewComponent,
+    AgeValidatorDirective
   ],
   imports: [
     BrowserModule,
