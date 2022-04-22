@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Registration } from 'src/app/models/registration';
 import { RegistrationService } from 'src/app/services/registration.service';
 
@@ -10,7 +11,7 @@ import { RegistrationService } from 'src/app/services/registration.service';
 })
 export class NewComponent implements OnInit {
 
-  constructor(private registrationService:RegistrationService) { }
+  constructor(private registrationService:RegistrationService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -23,12 +24,14 @@ export class NewComponent implements OnInit {
       fData.birthday,
       fData.gender,
       fData.email,
+      fData.phone,
       fData.grade,
 
     )
     this.registrationService.addRegistration(registration).subscribe((response)=>{
       console.log('įrašas pridėtas, atsakymas:');
       console.log(response);
+      this.router.navigate(["/"]);
     })
     
 
