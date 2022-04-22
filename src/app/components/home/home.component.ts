@@ -9,14 +9,26 @@ import { RegistrationService } from 'src/app/services/registration.service';
 })
 export class HomeComponent implements OnInit {
 
+  private loadData(){
+    this.registrationService.getRegistrations().subscribe((response)=>{
+      this.kidRegistrations=response;
+  });
+  }
+
   public kidRegistrations:Registration[]=[];
 
   constructor(private registrationService:RegistrationService) { }
 
   ngOnInit(): void {
-    this.registrationService.getRegistrations().subscribe((response)=>{
-      this.kidRegistrations=response;
-  });
+    this.loadData();
+  }
+
+  deleteRegistration(id:String){
+    this.registrationService.deleteRegistration(id).subscribe((response)=>{
+
+      console.log("ištrinta");
+      this.loadData();
+    });
   }
 
 }

@@ -23,7 +23,14 @@
           <td>{{ registration.email }}</td>
           <td>{{ registration.phone }}</td>
           <td>{{ registration.grade }}</td>
-          <td></td>
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="deleteRegistration(registration.id)"
+            >
+              Ištrinti
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
