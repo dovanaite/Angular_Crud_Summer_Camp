@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   public isData=false;
   public isError:boolean=false;
-  public isLoading:boolean=false;
+  public isLoading:boolean=true;
 
   private loadData(){
     this.registrationService.getRegistrations().subscribe({

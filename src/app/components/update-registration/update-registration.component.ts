@@ -14,7 +14,7 @@ export class UpdateRegistrationComponent implements OnInit {
   public registration:Registration=new Registration("","",0,"","","",5);
   public isData=false;
   public isError:boolean=false;
-  public isLoading:boolean=false;
+  public isLoading:boolean=true;
 
   constructor(private registrationService:RegistrationService, private router:Router, private route:ActivatedRoute) {
     this.id=this.route.snapshot.params['id'];
