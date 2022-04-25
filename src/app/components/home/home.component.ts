@@ -9,13 +9,26 @@ import { RegistrationService } from 'src/app/services/registration.service';
 })
 export class HomeComponent implements OnInit {
 
+  public isData=false;
+  public isError:boolean=false;
+  public isLoading:boolean=false;
+
   private loadData(){
-    this.registrationService.getRegistrations().subscribe((response)=>{
-      this.kidRegistrations=response;
-  });
+    this.registrationService.getRegistrations().subscribe({
+      next:(response)=>{
+        this.registration=response;
+        this.isData=true;
+        this.isLoading=false;
+        console.log(this.registration);
+      },
+      error:(error)=>{
+        this.isLoading=false;
+        this.isError=true;
+      }
+    })
   }
 
-  public kidRegistrations:Registration[]=[];
+  public registration:Registration[]=[];
 
   constructor(private registrationService:RegistrationService) { }
 

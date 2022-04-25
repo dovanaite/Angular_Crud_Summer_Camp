@@ -8,6 +8,10 @@ import { map } from 'rxjs/operators';
 })
 export class RegistrationService {
 
+  public loadRegistration(registration: Registration) {
+    throw new Error('Method not implemented.');
+  }
+
   private readonly url = "https://summercamp-2f951-default-rtdb.europe-west1.firebasedatabase.app"
 
   constructor(private http:HttpClient) {
@@ -16,6 +20,13 @@ export class RegistrationService {
    
    public addRegistration(registration:Registration){
     return this.http.post(this.url+"/registrations.json",registration);
+    }
+
+    public getRegistration(id:String){
+      return this.http.get<Registration>(this.url+"/registrations/"+id+".json").pipe( map((response)=>{
+        response.id=id;
+        return response;
+      }));
     }
 
     public getRegistrations(){
@@ -31,5 +42,11 @@ export class RegistrationService {
     public deleteRegistration(id:String){
       return this.http.delete(this.url+"/registrations/"+id+".json");
     }
+
+    public updateRegistration(registration:Registration){
+      return this.http.patch(this.url+"/registrations/"+registration.id+".json", registration);
+    }
+
+ 
 
 }

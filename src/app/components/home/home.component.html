@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let registration of kidRegistrations">
+        <tr *ngFor="let registration of registration">
           <td>{{ registration.name }}</td>
           <td>{{ registration.surname }}</td>
           <td>{{ registration.birthday }}</td>
@@ -24,6 +24,11 @@
           <td>{{ registration.phone }}</td>
           <td>{{ registration.grade }}</td>
           <td>
+            <a
+              class="btn btn-success"
+              [routerLink]="['/update', registration.id]"
+              >Redaguoti</a
+            >&nbsp;
             <button
               class="btn btn-danger"
               (click)="deleteRegistration(registration.id)"
@@ -34,5 +39,17 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="card" *ngIf="isLoading">
+    <div class="card-body">
+      <div class="alert alert-info">Loading ...</div>
+    </div>
+  </div>
+  <div class="card" *ngIf="isError">
+    <div class="card-body">
+      <div class="alert alert-danger">
+        Įvyko klaida užkraunant duomenis. Bandykite vėliau.
+      </div>
+    </div>
   </div>
 </div>
