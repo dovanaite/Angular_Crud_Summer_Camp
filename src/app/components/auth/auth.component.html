@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3 col-xs-12">
+    <div class="card">
+      <div class="card-header">Nauja registracija</div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="mb-3">
+            <label for="" class="form-label">El.paštas</label>
+            <input
+              type="text"
+              ngModel
+              name="email"
+              id=""
+              class="form-control"
+              required
+              #email="ngModel"
+              [email]="true"
+            />
+            <span class="help-block" *ngIf="!email.valid && email.touched"
+              >Neteisingas el.paštas</span
+            >
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Slaptažodis</label>
+            <input
+              type="password"
+              ngModel
+              name="password"
+              id=""
+              class="form-control"
+              minlength="6"
+              required
+              #pass="ngModel"
+            />
+            <span class="help-block" *ngIf="!pass.valid && pass.touched"
+              >Neteisingas slaptažodis</span
+            >
+          </div>
+          <div>
+            <button type="submit" class="btn btn-success">Registruotis</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

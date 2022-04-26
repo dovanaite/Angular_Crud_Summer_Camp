@@ -10,6 +10,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { NewComponent } from './components/new/new.component';
 import { AgeValidatorDirective } from './directives/age-validator.directive';
 import { UpdateRegistrationComponent } from './components/update-registration/update-registration.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { EmailValidatorDirective } from './directives/email-validator.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UpdateRegistrationComponent } from './components/update-registration/up
     NavigationComponent,
     NewComponent,
     AgeValidatorDirective,
-    UpdateRegistrationComponent
+    UpdateRegistrationComponent,
+    AuthComponent,
+    EmailValidatorDirective
   ],
   imports: [
     BrowserModule,
