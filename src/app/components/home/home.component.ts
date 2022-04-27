@@ -12,44 +12,46 @@ import { RegistrationService } from 'src/app/services/registration.service';
 })
 export class HomeComponent implements OnInit {
 
-  public isData=false;
-  public isError:boolean=false;
-  public isLoading:boolean=true;
+  public isData = false;
+  public isError: boolean = false;
+  public isLoading: boolean = true;
+  public registration: Registration[] = [];
+  public isLoggedin = false;
+  public user?: AuthResponseData;
 
-  private loadData(){
+  private loadData() {
     this.registrationService.getRegistrations().subscribe({
-      next:(response)=>{
-        this.registration=response;
-        this.isData=true;
-        this.isLoading=false;
+      next: (response) => {
+        this.registration = response;
+        this.isData = true;
+        this.isLoading = false;
         console.log(this.registration);
       },
-      error:(error)=>{
-        this.isLoading=false;
-        this.isError=true;
+      error: (error) => {
+        this.isLoading = false;
+        this.isError = true;
       }
     })
   }
 
-  public registration:Registration[]=[];
-  public isLoggedin=false;
-  public user?:AuthResponseData;
 
-  constructor(private registrationService:RegistrationService, private router:Router, private auth:AuthService) { }
+  constructor(private registrationService: RegistrationService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.loadData();
+    this.isLoggedin = this.auth.isLoggedin;
+    this.user = this.auth.user;
   }
 
-  deleteRegistration(id:String){
-    this.registrationService.deleteRegistration(id).subscribe((response)=>{
+  deleteRegistration(id: String) {
+    this.registrationService.deleteRegistration(id).subscribe((response) => {
 
       console.log("ištrinta");
       this.loadData();
     });
   }
 
-  onLogout(){
+  onLogout() {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
