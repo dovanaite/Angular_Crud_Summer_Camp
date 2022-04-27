@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthResponseData } from 'src/app/models/auth.response.data';
 import { Registration } from 'src/app/models/registration';
+import { AuthService } from 'src/app/services/auth.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
@@ -29,8 +32,10 @@ export class HomeComponent implements OnInit {
   }
 
   public registration:Registration[]=[];
+  public isLoggedin=false;
+  public user?:AuthResponseData;
 
-  constructor(private registrationService:RegistrationService) { }
+  constructor(private registrationService:RegistrationService, private router:Router, private auth:AuthService) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -42,6 +47,11 @@ export class HomeComponent implements OnInit {
       console.log("ištrinta");
       this.loadData();
     });
+  }
+
+  onLogout(){
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 
 }

@@ -1,33 +1,30 @@
 <div class="card">
-  <div class="card-header">Vaikų sąrašas</div>
-  <div class="card-body" *ngIf="isData">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Vaiko vardas</th>
-          <th>Vaiko pavardė</th>
-          <th>Vaiko gimimo metai</th>
-          <th>Vaiko lytis</th>
-          <th>El. paštas</th>
-          <th>Telefonas</th>
-          <th>Klasė</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let registration of registration">
-          <td>{{ registration.name }}</td>
-          <td>{{ registration.surname }}</td>
-          <td>{{ registration.birthday }}</td>
-          <td>{{ registration.gender }}</td>
-          <td>{{ registration.email }}</td>
-          <td>{{ registration.phone }}</td>
-          <td>{{ registration.grade }}</td>
-          <td>
-            <a
-              class="btn btn-success"
-              [routerLink]="['/update', registration.id]"
-              >Redaguoti</a
+    <div class="card-header">Vaikų sąrašas</div>
+    <div class="card-body" *ngIf="isData">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Vaiko vardas</th>
+                    <th>Vaiko pavardė</th>
+                    <th>Vaiko gimimo metai</th>
+                    <th>Vaiko lytis</th>
+                    <th>El. paštas</th>
+                    <th>Telefonas</th>
+                    <th>Klasė</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let registration of registration">
+                    <td>{{ registration.name }}</td>
+                    <td>{{ registration.surname }}</td>
+                    <td>{{ registration.birthday }}</td>
+                    <td>{{ registration.gender }}</td>
+                    <td>{{ registration.email }}</td>
+                    <td>{{ registration.phone }}</td>
+                    <td>{{ registration.grade }}</td>
+                    <td>
+                        <a class="btn btn-success" [routerLink]="['/update', registration.id]">Redaguoti</a
             >&nbsp;
             <button
               class="btn btn-danger"
@@ -39,17 +36,25 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class="card" *ngIf="isLoading">
-    <div class="card-body">
-      <div class="alert alert-info">Loading ...</div>
+    <div *ngIf="!isLoggedin">
+      Norėdami redaguoti arba ištrinti įrašus turite
+      <a routerLink="/login">prisijungti</a>.
     </div>
-  </div>
-  <div class="card" *ngIf="isError">
-    <div class="card-body">
-      <div class="alert alert-danger">
-        Įvyko klaida užkraunant duomenis. Bandykite vėliau.
-      </div>
+    <div *ngIf="isLoggedin">
+        Jūs esate prisijungęs kaip: {{ user?.email }}.
+        <a class="btn btn-primary" (click)="onLogout()">Atsijungti</a>
     </div>
-  </div>
+</div>
+<div class="card" *ngIf="isLoading">
+    <div class="card-body">
+        <div class="alert alert-info">Loading ...</div>
+    </div>
+</div>
+<div class="card" *ngIf="isError">
+    <div class="card-body">
+        <div class="alert alert-danger">
+            Įvyko klaida užkraunant duomenis. Bandykite vėliau.
+        </div>
+    </div>
+</div>
 </div>
