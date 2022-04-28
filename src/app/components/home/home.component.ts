@@ -19,13 +19,16 @@ export class HomeComponent implements OnInit {
   public isLoggedin = false;
   public user?: AuthResponseData;
 
+
+
+  constructor(private registrationService: RegistrationService, private router: Router, private auth: AuthService) { }
+
   private loadData() {
     this.registrationService.getRegistrations().subscribe({
       next: (response) => {
         this.registration = response;
         this.isData = true;
         this.isLoading = false;
-        console.log(this.registration);
       },
       error: (error) => {
         this.isLoading = false;
@@ -34,10 +37,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
-  constructor(private registrationService: RegistrationService, private router: Router, private auth: AuthService) { }
-
   ngOnInit(): void {
+
     this.loadData();
     this.isLoggedin = this.auth.isLoggedin;
     this.user = this.auth.user;
@@ -45,8 +46,6 @@ export class HomeComponent implements OnInit {
 
   deleteRegistration(id: String) {
     this.registrationService.deleteRegistration(id).subscribe((response) => {
-
-      console.log("ištrinta");
       this.loadData();
     });
   }

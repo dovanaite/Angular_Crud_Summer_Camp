@@ -12,6 +12,8 @@ import { AgeValidatorDirective } from './directives/age-validator.directive';
 import { UpdateRegistrationComponent } from './components/update-registration/update-registration.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { EmailValidatorDirective } from './directives/email-validator.directive';
+import { FooterComponent } from './components/footer/footer.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { EmailValidatorDirective } from './directives/email-validator.directive'
     AgeValidatorDirective,
     UpdateRegistrationComponent,
     AuthComponent,
-    EmailValidatorDirective
+    EmailValidatorDirective,
+    FooterComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

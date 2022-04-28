@@ -1,0 +1,9 @@
+<footer class="fixed-bottom">
+  
+        <div *ngIf="isLoggedin" class="alert alert-success text-center mb-0">
+            Sveiki prisijungę prie registracijų sistemos. Sėkmingo darbo
+        </div>
+        <div *ngIf="!isLoggedin" class="alert alert-danger text-center mb-0">
+            Dėmesio: Registracijas pridėti ir redaguoti gali tik prisijungę vartotojai
+        </div>
+</footer>
