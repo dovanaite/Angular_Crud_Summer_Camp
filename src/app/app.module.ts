@@ -1,8 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +13,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { EmailValidatorDirective } from './directives/email-validator.directive';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     AuthComponent,
     EmailValidatorDirective,
     FooterComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,13 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

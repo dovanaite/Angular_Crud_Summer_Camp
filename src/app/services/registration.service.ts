@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Registration } from '../models/registration';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,7 @@ export class RegistrationService {
 
   private readonly url = "https://summercamp-2f951-default-rtdb.europe-west1.firebasedatabase.app"
 
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient, private auth: AuthService) {
   }
 
   public addRegistration(registration: Registration) {
