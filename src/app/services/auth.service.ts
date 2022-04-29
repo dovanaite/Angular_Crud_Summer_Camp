@@ -25,8 +25,22 @@ export class AuthService {
       .pipe(tap((response) => {
         this.isLoggedin = true;
         this.user = response;
+        this.user.expires = new Date().getTime() + +response.expiresIn * 1000;
         this.userUpdated.emit();
+        localStorage.setItem('user', JSON.stringify(this.user));
       }))
+  }
+
+  public autoLogin() {
+    const data = localStorage.getItem('user');
+    if (data != null) {
+
+      const user: AuthResponseData = JSON.parse(data);
+      if (user.expires != null && user.expires > new Date().getTime()) {
+        this.user = new AuthResponseData(user.kind, user.idToken, user.email, user.refreshToken, user.expiresIn, user.localId);
+        this.isLoggedin = true;
+      }
+    }
   }
 
 
@@ -41,6 +55,8 @@ export class AuthService {
   public logout() {
     this.isLoggedin = false;
     this.user = undefined;
+    localStorage.removeItem('user');
+    this.userUpdated.emit();
   }
 
   public changePassword(password: String) {
