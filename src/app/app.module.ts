@@ -1,6 +1,6 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { EmailValidatorDirective } from './directives/email-validator.directive'
 import { FooterComponent } from './components/footer/footer.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.interceptor';
+import { RegistrationToNaturalistClubComponent } from './components/registration-to-naturalist-club/registration-to-naturalist-club.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,15 @@ import { AuthInterceptorInterceptor } from './interceptors/auth-interceptor.inte
     EmailValidatorDirective,
     FooterComponent,
     ChangePasswordComponent,
-    AuthComponent
+    AuthComponent,
+    RegistrationToNaturalistClubComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
