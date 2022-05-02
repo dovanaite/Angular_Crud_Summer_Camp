@@ -22,7 +22,17 @@
                 <input type="text" formControlName="grade" class="form-control" >
                 <span class="help-block" *ngIf="!naturalistClubForm.get('grade')?.valid && naturalistClubForm.get('grade')?.touched">Vaikas turi būti nuo 6 iki 12 klasės</span>
             </div>
-            <button type="submit" [disabled]="!naturalistClubForm.valid" class="btn btn-success" >Pridėti</button>
+            <hr>
+            <h4>Alergijos</h4>
+            <button type="button" class="btn btn-success" (click)="addAllergy()" >Pridėti alergiją</button>
+            <div formArrayName="allergies">
+                <div class="mb-3 mt-3" *ngFor="let allergyItem of allergies; let i = index">
+                    <input type="text" class="form-control" [formControlName]="i">
+                </div>
+            </div>
+            <button type="button" class="btn btn-success mt-3" (click)="removeAllergy()" >Pašalinti alergiją</button>
+            <hr>
+            <button type="submit" [disabled]="!naturalistClubForm.valid" class="btn btn-success mb-5" >Pridėti</button>
         </form>
     </div>
     
