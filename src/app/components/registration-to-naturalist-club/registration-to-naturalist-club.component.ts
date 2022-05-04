@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Club } from 'src/app/module/club-module';
 import { ClubService } from 'src/app/services/club.service';
 
 @Component({
@@ -34,9 +33,10 @@ export class RegistrationToNaturalistClubComponent implements OnInit {
     this.clubService.addClubInformation(this.naturalistClubForm.value).subscribe((response) => {
       console.log('pridėtas įrašas:');
       console.log(response);
+      this.naturalistClubForm.reset();
     })
 
-    this.naturalistClubForm.reset();
+
   }
 
   checkGrade(control: FormControl): { [s: string]: boolean } | null {

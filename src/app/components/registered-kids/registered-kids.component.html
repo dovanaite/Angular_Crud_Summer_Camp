@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">Technikų sąrašas</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Vardas</th>
+                    <th>Pavardė</th>
+                    <th>Elektroninis paštas</th>
+                    <th>Klasė</th>
+                    <th>Alergijos</th>
+                    <th>Ankstesni būreliai</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let kid of registeredKidsInClub">
+                    <td>{{kid.name }}</td>
+                    <td>{{kid.surname }}</td>
+                    <td>{{kid.email }}</td>
+                    <td>{{kid.grade }}</td>
+                    <td>
+                        <div *ngFor="let allergy of kid.allergy">{{allergy}}</div>
+                    </td>
+                    <td>
+                        <div *ngFor="let club of kid.club">{{club.year}}, {{club.clubName}}, {{club.clubType}}</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
